@@ -18,10 +18,10 @@ def canUnlockAll(boxes):
             else:
                 not_found.add(i)
 
+        if boxesRange == not_found:
+            return False        
+
         if not not_found:
             return True
-
-        if boxesRange == not_found:
-            return False
 
         boxesRange = not_found
