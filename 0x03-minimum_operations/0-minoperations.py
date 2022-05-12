@@ -4,7 +4,6 @@
 
 def minOperations(n):
 
-
     div, numop = 2, 0
 
     while n > 1:
