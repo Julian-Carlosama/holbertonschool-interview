@@ -24,7 +24,11 @@ void _print_grid(int grid[3][3])
 }
 
 /**
- * 
+ * grid_sum - Computes the sum of two sandpiles
+ * @grid1: Pile 1
+ * @grid2: Pile 2
+ *
+ * Return: No Return
  */
 void grid_sum(int grid1[3][3], int grid2[3][3])
 {
@@ -36,7 +40,10 @@ void grid_sum(int grid1[3][3], int grid2[3][3])
 }
 
 /**
+ * is_stable - Checks if sand pile is stable
+ * @grid: Grid to check
  *
+ * Return: No Return
  */
 int is_stable(int grid[3][3])
 {
@@ -51,7 +58,10 @@ int is_stable(int grid[3][3])
 }
 
 /**
- * 
+ * toppling - Distributes sand grains
+ * @grid: Grid to process
+ *
+ * Return: No Return
  */
 void toppling(int grid[3][3])
 {
@@ -86,11 +96,15 @@ void toppling(int grid[3][3])
 }
 
 /**
+ * sandpiles_sum - Computes the sum of two sandpiles
+ * @grid1: Pile 1
+ * @grid2: Pile 2
  *
+ * Return: No Return
  */
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
-	grid_sum(grid1, grid2);
+        grid_sum(grid1, grid2);
 	while (!is_stable(grid1))
 	{
 		printf("=\n");
