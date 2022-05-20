@@ -2,9 +2,7 @@
 
 /**
  * _print_grid - Function that computes the sum of two sandpiles
- * 
  * @grid: Grid to print
- * 
  * Return: No return
  */
 void _print_grid(int grid[3][3])
