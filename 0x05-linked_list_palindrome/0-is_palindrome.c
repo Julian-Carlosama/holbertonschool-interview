@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include "lists.h"
 
@@ -10,11 +11,12 @@
  */
 
 int is_palindrome(listint_t **head){
-	int length_all = length_linked(*head), middle = (middle / 2), step = 0;
+	int length_all = palindro_lkd(*head);
+	int middle = (length_all / 2), step = 0;
 	listint_t *left = *head, *right = NULL;
 	size_t k = 0, j = 1;
 
-	if (middle == NULL)
+	if (!middle)
 		return (1);
 
 	for (; step < middle; ++step)
