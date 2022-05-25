@@ -1,14 +1,11 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "lists.h"
-
 /**
- * is_palindrome - Checks if a singly linked list is a palindrome.
- *
- * @head: Is the double pointer to the first node in a linked list
- *
- * Return: 0 if it is not a palindrome, 1 if it is a palindrome
- */
+  * is_palindrome - Checks if a singly linked list is a palindrome.
+  *
+  * @head: Is the double pointer to the first node in a linked list
+  *
+  * Return: 0 if it is not a palindrome, 1 if it is a palindrome
+  */
 
 int is_palindrome(listint_t **head){
 	int length_all = palindro_lkd(*head);
@@ -40,7 +37,6 @@ int is_palindrome(listint_t **head){
 /**
  * palindro_lkd - Look amount of nodes
  * @head: Copy of the Head node
- *
  * Return: Length of the linked list
  */
 int palindro_lkd(listint_t *head)
@@ -50,5 +46,5 @@ int palindro_lkd(listint_t *head)
 	for (; head != NULL; ++i, (head = head->next))
 		;
 
-	return (i);
+	return (i);  
 }
