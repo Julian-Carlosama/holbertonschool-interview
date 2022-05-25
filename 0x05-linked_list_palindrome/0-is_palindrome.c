@@ -22,7 +22,7 @@ int is_palindrome(listint_t **head){
 
 		k = (middle - step);
 		/* Get the node of the right */
-		for (j = 1; (j < k) && (right->next); ++j)
+		for (; (j < k) && (right->next); ++j)
 			right = right->next;
 
 		if (left->n != right->n)
