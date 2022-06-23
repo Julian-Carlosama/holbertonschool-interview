@@ -2,7 +2,9 @@
 
 
 def validUTF8(data):
-    """ Method that determines if a given data set represents a valid UTF-8 encoding."""
+    """ Method that determines if a given data
+        set represents a valid UTF-8 encoding.
+    """
     counter = 0
     for num in data:
         mask = 0b10000000
