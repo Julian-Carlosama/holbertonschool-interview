@@ -21,18 +21,18 @@ int slide_line(int *line, size_t size, int direction)
         	point_to_next = line;
         	left = point_to_next;
 
-        	while (left < line)
+        	while (left < line + (size - 1))
         	{
-            		while (*left == 0 && left < line)
+            		while (*left == 0 && left < line + (size - 1))
             		{
                 		left++;
             		}
-            		right = left++;
+            		right = left + 1;
             		while (right < line + size)
             		{
                 		if (*right == *left)
                 		{
-                    			*point_to_next = *left;
+                    			*point_to_next = *left * 2;
                     			if (point_to_next != left)
                     			{
                     				*left = 0;
@@ -48,10 +48,10 @@ int slide_line(int *line, size_t size, int direction)
             		}
             		left++;
         	}
-        	if (*line && !*point_to_next)
+        	if (*(line + size - 1) && !*point_to_next)
         	{
-        		*point_to_next = *line;
-        		*line = 0;
+        		*point_to_next = *(line + size -1);
+        		*(line + size - 1) = 0;
         	}
 	}
 	return (1);
