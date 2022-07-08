@@ -1,9 +1,9 @@
 #include "menger.h"
 /**
  * menger - Function that draws a 2D Menger Sponge
- * 
+ *
  * @level: Is the level of the Menger Sponge to draw
- * 
+ *
  * Return: No return
  */
 
