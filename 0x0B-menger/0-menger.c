@@ -9,28 +9,24 @@
 
 void menger(int level)
 {
-        int row, col, x = 0, size = 1 ;
+	int row, col, x = 0, size = 1;
 
-        //size = pow(3, level);
-
-        for (row = 0; row < level; row++)
-                size *= 3;
-
-        for (row = 0; row < size; row++)
-        {
-                for (col = 0; col < size; col++)
-                {
-                        for (x = size / 3; x > 0; x /= 3)
-                        {
-                                if ((row % (x * 3)) / x == 1 && (col % (x * 3)) / x == 1)
-                                        break;
-
-                        }
-                        if (x)
-                                printf(" ");
-                        else
-                                printf("#");
-                }
-                printf("\n");
-        }
+	for (row = 0; row < level; row++)
+		size *= 3;
+	for (row = 0; row < size; row++)
+	{
+		for (col = 0; col < size; col++)
+		{
+			for (x = size / 3; x > 0; x /= 3)
+			{
+				if ((row % (x * 3)) / x == 1 && (col % (x * 3)) / x == 1)
+					break;
+			}
+			if (x)
+				printf(" ");
+			else
+				printf("#");
+		}
+		printf("\n");
+	}
 }
