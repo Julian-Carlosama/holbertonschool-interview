@@ -9,13 +9,16 @@
 
 void menger(int level)
 {
-        int row = 0, col = 0, x = 0, size;
+        int row, col, x = 0, size = 1 ;
 
-        size = pow(3, level);
+        //size = pow(3, level);
 
-        for (; row <= size; row++)
+        for (row = 0; row < level; row++)
+                size *= 3;
+
+        for (row = 0; row < size; row++)
         {
-                for (; col <= size; col++)
+                for (col = 0; col < size; col++)
                 {
                         for (x = size / 3; x > 0; x /= 3)
                         {
