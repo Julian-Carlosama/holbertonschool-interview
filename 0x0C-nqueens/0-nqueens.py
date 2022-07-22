@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """ N non-attacking queens on an N*N chessboard """
+
+
 import sys
 
 
