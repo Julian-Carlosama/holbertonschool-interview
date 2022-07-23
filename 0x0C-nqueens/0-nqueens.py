@@ -4,7 +4,7 @@ import sys
 
 
 def resolve(row, column):
-
+    """ Print the requires """
     for i in range(column):
         if row[i] == row[column]:
             return False
@@ -16,6 +16,7 @@ def resolve(row, column):
 
 
 def place_queen(row, column):
+    """ Print acording the size """
     queen_size = len(row)
     success = 0
     if queen_size == column:
