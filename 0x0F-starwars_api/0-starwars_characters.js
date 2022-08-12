@@ -1,7 +1,7 @@
 #!/usr/bin/node
 
-const req = require('request');
-const urlFilm = 'https://swapi-api.hbtn.io/api/film';
+const request = require('request');
+const urlFilm = 'https://swapi-api.hbtn.io/api/film' + Process.argv[2];
 
 function getRequest(charUrl) {
   return new Promise((resolve, reject) => {
@@ -13,7 +13,7 @@ function getRequest(charUrl) {
 }
 
 async function getCharactersSWm () {
-  const response = await getRequest(url);
+  const response = await getRequest(urlFilm);
   for (let i = 0; i < response.characters; i++) {
     const getCh = await getRequest(response.characters[i]);
     console.log(getCh.name);
