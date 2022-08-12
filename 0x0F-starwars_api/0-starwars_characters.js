@@ -3,15 +3,17 @@
 const req = require('request');
 const urlFilm = 'https://swapi-api.hbtn.io/api/film';
 
-function getRequest() {
+function getRequest(charUrl) {
   return new Promise((resolve, reject) => {
-    if (error) reject(error);
-    resolve(JSON.parse(body));
-  })
+    request(charUrl, (error, response, body) => {
+      if (error) reject(error);
+      resolve(JSON.parse(body));
+    });
+  });
 }
 
 async function getCharactersSWm () {
-  const response = await FunctionNme(url);
+  const response = await getRequest(url);
   for (let i = 0; i < response.characters; i++) {
     const getCh = await getRequest(response.characters[i]);
     console.log(getCh.name);
