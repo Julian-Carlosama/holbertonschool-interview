@@ -3,7 +3,7 @@
 const request = require('request');
 const urlFilm = 'https://swapi-api.hbtn.io/api/film' + Process.argv[2];
 
-function getRequest(charUrl) {
+function getRequest (charUrl) {
   return new Promise((resolve, reject) => {
     request(charUrl, (error, response, body) => {
       if (error) reject(error);
