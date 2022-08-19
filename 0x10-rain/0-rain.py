@@ -10,16 +10,24 @@ def rain(walls):
     """
 
     totalWater = 0
+    i = 0
+    j = len(walls) - 1
+    right = 0
+    left = 0
 
-    if not walls or not isinstance(walls, list):
-        return 0
+    if not walls or len(walls) < 1:
+        return 
 
-    for i, wall in enumerate(walls):
-        right = i + 1
-        if wall <= right:
-            if right != 0:
-                totalWater += wall
-            else:
-                totalWater += 1
+    while i < j:
+        if walls[i] < walls[j]:
+            if walls[i] < left:
+                totalWater += left - walls[i]
+            left = max(left, walls[i])
+            i += 1
+        else:
+            if walls[j] < right:
+                totalWater += right - walls[j]
+            right = max(right, walls[j])
+            j -= 1
 
     return totalWater
