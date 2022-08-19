@@ -15,9 +15,6 @@ def rain(walls):
     right = 0
     left = 0
 
-    if not walls or len(walls) < 1:
-        return
-
     while i < j:
         if walls[i] < walls[j]:
             if walls[i] < left:
