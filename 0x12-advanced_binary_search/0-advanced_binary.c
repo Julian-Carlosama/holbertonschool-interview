@@ -19,12 +19,12 @@ int search_advanced(int *array, int first, int last, int value)
 		return first;
 	}
 	printf("Searching in array:");
-	for (index = first; index < last; index++)
+	for (index = first; index <= last; index++)
 	{
 		if (index == last)
-			printf("%d\n", array[index]);
+			printf(" %d\n", array[index]);
 		else
-			printf("%d", array[index]);	
+			printf(" %d,", array[index]);	
 	}
 	// Recursive mode
 	if (array[splitArr] > value)
