@@ -1,8 +1,13 @@
 #include "search_algos.h"
 
 /**
- * @brief 
- * 
+ * search_advanced - Function that find similar index
+ * @array: Pointer that indicate the fist item
+ * @first: First index of the new array
+ * @last: Second index of the new array
+ * @value: Value that can be similar
+ *
+ * Return: Value if this is found or -1
  */
 int search_advanced(int *array, int first, int last, int value)
 {
@@ -14,9 +19,9 @@ int search_advanced(int *array, int first, int last, int value)
 		if (value > array[last] || value < array[first])
 		{
 			printf("Searching in array: %d\n", array[splitArr]);
-			return -1;
+			return (-1);
 		}
-		return first;
+		return (first);
 	}
 	printf("Searching in array:");
 	for (index = first; index <= last; index++)
@@ -24,9 +29,9 @@ int search_advanced(int *array, int first, int last, int value)
 		if (index == last)
 			printf(" %d\n", array[index]);
 		else
-			printf(" %d,", array[index]);	
+			printf(" %d,", array[index]);
 	}
-	// Recursive mode
+	/* Recursive mode */
 	if (array[splitArr] < value)
 		return (search_advanced(array, splitArr + 1, last, value));
 	else
@@ -41,7 +46,8 @@ int search_advanced(int *array, int first, int last, int value)
  *
  * Return: Always EXIT_SUCCESS
  */
-int advanced_binary(int *array, size_t size, int value) {
+int advanced_binary(int *array, size_t size, int value)
+{
 	if (array)
 		return (search_advanced(array, 0, size - 1, value));
 	return (-1);
