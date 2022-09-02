@@ -27,10 +27,10 @@ int search_advanced(int *array, int first, int last, int value)
 			printf(" %d,", array[index]);	
 	}
 	// Recursive mode
-	if (array[splitArr] > value)
-		return (search_advanced(array, first, splitArr, value));
-	else
+	if (array[splitArr] < value)
 		return (search_advanced(array, splitArr + 1, last, value));
+	else
+		return (search_advanced(array, first, splitArr, value));
 }
 
 /**
