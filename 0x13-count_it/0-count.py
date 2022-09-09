@@ -4,10 +4,12 @@
 """
 import requests
 
+
 def count_words(subreddit, word_list):
     hot_titles = recursive(subreddit, word_list, {})
     if hot_titles:
-        for key, values in sorted(hot_titles.items(), key=lambda val: val[1], reverse=True):
+        for key, values in sorted(hot_titles.items(), key=lambda val: val[1],
+                                  reverse=True):
             if values != 0:
                 print('{}: {}'.format(key, values))
 
@@ -15,10 +17,12 @@ def count_words(subreddit, word_list):
 def recursive(subreddit, word_list, hot_titles, after=""):
     headers = {'User-Agent': 'Carlosam'}
     params = {"limit": 100, 'after': after}
-    respons = requests.get("https://www.reddit.com/r/{}/hot/.json".
-                            format(subreddit), headers=headers, params=params)
+    sub = subreddit
+    url = "https://www.reddit.com/r/{}/hot/.json".format(sub)
+    respons = requests.get(url, headers=headers, params=params)
 
-    if respons.status_code != 200:
+    # handles error response; invalid subreddit
+    if respons.status_code is not 200:
         return None
     if after is None:
         return hot_titles
