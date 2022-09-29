@@ -5,6 +5,7 @@
 
 
 def rotate_2d_matrix(matrix):
+    matrix.reverse()
     matrixCopy = matrix.copy()
     lenM = len(matrix)
 
