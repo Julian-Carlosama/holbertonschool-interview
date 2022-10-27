@@ -11,7 +11,7 @@ def makeChange(coins, total):
     """
     if total <= 0:
         return 0
-    
+
     else:
         from math import trunc
 
@@ -22,7 +22,7 @@ def makeChange(coins, total):
             for coin in coins:
                 if total % coin == 0:
                     coinsDict[coin] = total / coin
-                    return(int(sum(coinsDict.values())))
+                    return (int(sum(coinsDict.values())))
                 else:
                     coinsDict[coin] = trunc(total / float(coin))
                     total -= (coin * coinsDict[coin])
