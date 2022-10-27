@@ -13,4 +13,17 @@ def makeChange(coins, total):
         return 0
     
     else:
-        coins = {}
+        from math import trunc
+
+        coinsDict = {}
+        coins = sorted(coins, reverse=True)
+
+        while total is not None:
+            for coin in coins:
+                if total % coin == 0:
+                    coinsDict[coin] = total / coin
+                    return(int(sum(coinsDict.values())))
+                else:
+                    coinsDict[coin] = trunc(total / float(coin))
+                    total -= (coin * coinsDict[coin])
+            return -1
