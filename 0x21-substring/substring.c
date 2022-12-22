@@ -27,20 +27,23 @@ int *find_substring(char const *s, char const **words, int nb_words, int *n)
 	if (index_arr == NULL)
 		return (NULL);
 
-	for (size_t i = 0; i < strlen(s) - len_words + 1; i++)
+	int word_length = strlen(words[0]);
+	int total_length = word_length * nb_words;
+	int s_length = strlen(s);
+
+	for (int i = 0; i < s_length - total_length + 1; i++)
 	{
 		int found_count = 0;
 		for (int j = 0; j < nb_words; j++)
 		{
-			char *p = strstr(s + i, words[j]);
-			if (p != NULL)
-			{
+			char *p = strstr(s + i + word_length * j, words[j]);
+
+			if (p != NULL && (size_t)(p -s) == (size_t)(i + word_length * j))
 				found_count++;
-				i = p - s;
-			}
+
 		}
 		if (found_count == nb_words)
-            		index_arr[count++] = i - found_count + 1;
+            		index_arr[count++] = i;
 	}
 	*n = count;
 	return (index_arr);
