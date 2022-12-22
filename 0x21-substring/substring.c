@@ -12,21 +12,24 @@
  */
 int *find_substring(char const *s, char const **words, int nb_words, int *n)
 {
-	int count = 0, len_words = 0;
-	int *index_arr = malloc(sizeof(int) * len_words);
-
 	if (!s || !words || nb_words == 0 || !n)
 		return (NULL);
-
+	
+	int count = 0, len_words = 0;
 	for (int i = 0; i < nb_words; i++)
 		len_words += strlen(words[i]);
 
+	int *index_arr = malloc(sizeof(int) * len_words);
 	if (index_arr == NULL)
 		return (NULL);
 
 	for (size_t i = 0; i < strlen(s); i++)
 	{
 		for (int j = 0; j < nb_words; j++)
+		{
+			if (j > nb_words)
+				break;
+
 			if (s[i] == words[j][0])
 			{
 				int k = i + 1;
@@ -40,6 +43,7 @@ int *find_substring(char const *s, char const **words, int nb_words, int *n)
 				if (words[j][l] == '\0')
 					index_arr[count++] = i;
 			}
+		}
 	}
 	*n = count;
 	return (index_arr);
