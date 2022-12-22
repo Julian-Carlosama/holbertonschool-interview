@@ -14,7 +14,7 @@
  */
 int *find_substring(char const *s, char const **words, int nb_words, int *n)
 {
-	int current_idx, count, str_len, word_len, check_strs, i, j, k;
+	int indx_cur, count, str_len, word_len, check_strs, i, j, k;
 	int *match, *idx_array;
 
 	if (!s || !words || !n || nb_words == 0)
@@ -34,8 +34,8 @@ int *find_substring(char const *s, char const **words, int nb_words, int *n)
 		{
 			for (k = 0; k < nb_words; k++)
 			{
-				current_idx = i + j * word_len;
-				check_strs = strncmp(s + current_idx, *(words + k), word_len);
+				indx_cur = i + j * word_len;
+				check_strs = strncmp(s + indx_cur, *(words + k), word_len);
 				if (!*(match + k) && !check_strs)
 				{
 					*(match + k) = 1;
