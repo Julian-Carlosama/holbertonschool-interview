@@ -12,39 +12,41 @@
  */
 int *find_substring(char const *s, char const **words, int nb_words, int *n)
 {
-	if (!s || !words || nb_words == 0 || !n)
-		return (NULL);
-	
-	int count = 0, len_words = 0;
-	for (int i = 0; i < nb_words; i++)
-		len_words += strlen(words[i]);
+	int current_idx, count, str_len, word_len, check_strs, i, j, k;
+	int *match, *idx_array;
 
-	int *index_arr = malloc(sizeof(int) * len_words);
-	if (index_arr == NULL)
+	if (!s || !words || !n || nb_words == 0)
 		return (NULL);
-
-	for (size_t i = 0; i < strlen(s); i++)
+	str_len = strlen(s);
+	word_len = strlen(words[0]);
+	idx_array = malloc(str_len * sizeof(int));
+	if (!idx_array)
+		return (NULL);
+	match = malloc(nb_words * sizeof(int));
+	if (!match)
+		return (NULL);
+	for (i = count = 0; i <= str_len - nb_words * word_len; i++)
 	{
-		for (int j = 0; j < nb_words; j++)
+		memset(match, 0, nb_words * sizeof(int));
+		for (j = 0; j < nb_words; j++)
 		{
-			if (j > nb_words)
-				break;
-
-			if (s[i] == words[j][0])
+			for (k = 0; k < nb_words; k++)
 			{
-				int k = i + 1;
-				int l = 1;
-				while (s[k] == words[j][l] && s[k] != '\0' && words[j][l] != '\0')
+				current_idx = i + j * word_len;
+				check_strs = strncmp(s + current_idx, *(words + k), word_len);
+				if (!*(match + k) && !check_strs)
 				{
-					k++;
-					l++;
+					*(match + k) = 1;
+					break;
 				}
-
-				if (words[j][l] == '\0')
-					index_arr[count++] = i;
 			}
+			if (k == nb_words)
+				break;
 		}
+		if (j == nb_words)
+			*(idx_array + count) = i, count += 1;
 	}
+	free(match);
 	*n = count;
-	return (index_arr);
+	return (idx_array);
 }
