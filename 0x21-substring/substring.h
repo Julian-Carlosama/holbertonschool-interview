@@ -1,4 +1,4 @@
-#ifdef SUBSTRING_H
+#ifndef SUBSTRING_H
 #define SUBSTRING_H
 
 #include <stdio.h>
