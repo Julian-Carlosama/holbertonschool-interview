@@ -27,28 +27,23 @@ int *find_substring(char const *s, char const **words, int nb_words, int *n)
 	if (index_arr == NULL)
 		return (NULL);
 
-	for (size_t i = 0; i < strlen(s); i++)
+	char *concat_words = malloc(sizeof(char) * len_words + 1);
+
+	if (concat_words == NULL)
+    	{
+        	free(index_arr);
+        	return (NULL);
+    	}
+
+	strcpy(concat_words, words[0]);
+	for (int i = 1; i < nb_words; i++)
+        	strcat(concat_words, words[i]);
+
+	for (size_t i = 0; i < strlen(s) - len_words + 1; i++)
 	{
-		for (int j = 0; j < nb_words; j++)
-		{
-			if (j > nb_words)
-				break;
+		if (strncmp(s + i, concat_words, len_words) == 0)
+            		index_arr[count++] = i;
 		
-			if (s[i] == words[j][0])
-			{
-				int k = i + 1;
-				int l = 1;
-
-				while (s[k] == words[j][l] && s[k] != '\0' && words[j][l] != '\0')
-				{
-					k++;
-					l++;
-				}
-
-				if (words[j][l] == '\0')
-					index_arr[count++] = i;
-			}
-		}
 	}
 	*n = count;
 	return (index_arr);
